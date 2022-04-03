@@ -1,0 +1,21 @@
+version: '3.8'
+
+volumes:
+  oracle_data:
+    driver: local
+
+services:
+
+  oracle:
+    image: gvenzl/oracle-xe:latest
+    container_name: 'oracle'
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - ./docker/oracle/dpdump:/opt/oracle/admin/XE/dpdump:z 
+      - ./docker/oracle/scripts/startup:/container-entrypoint-initdb.d
+    environment:
+      ORACLE_PASSWORD: senha123
+      APP_USER: usertest
+      APP_USER_PASSWORD: senha123
+    ports:
+      - 1521:1521
