@@ -7,7 +7,7 @@ volumes:
 services:
 
   oracle:
-    image: gvenzl/oracle-xe:latest
+    image: docker.io/gvenzl/oracle-xe:latest
     container_name: 'oracle'
     volumes:
       - oracle_data:/opt/oracle/oradata
